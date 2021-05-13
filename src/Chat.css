@@ -40,6 +40,7 @@
     background-color: #ffffff;
     border-radius: 10px;
     width: fit-content;
+    margin-bottom: 30px;
 }
 .chat__name {
     position: absolute;

@@ -8,10 +8,12 @@ import MoreVertIcon from '@material-ui/icons/MoreVert';
 import { IconButton } from '@material-ui/core';
 import SearchIcon from '@material-ui/icons/Search';
 import db from "./firebase";
+import { useStateValue } from "./StateProvider";
 
 
 function Sidebar() {
     const[rooms, setRooms] = useState([]);
+    const [{ user }, dispatch] = useStateValue();
     useEffect(() => {
         const person = db.collection('rooms').onSnapshot(snapshot => (
             setRooms(snapshot.docs.map(doc => ({
@@ -26,7 +28,7 @@ function Sidebar() {
     return (
         <div className="sidebar">
            <div className="sidebar__header">
-                <Avatar/>
+                <Avatar src={user?.photoURl}/>
                 <div className="sidebar__headerRight">
                     <IconButton>
                         <DonutLargeIcon/>
